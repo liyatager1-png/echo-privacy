@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join me on Echo</title>
+<meta name="description" content="Echo Rings: track calories, protein, steps and workouts while you cut or bulk. Add me as a friend.">
+<meta name="theme-color" content="#1E1F21">
+<style>
+  :root{color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:#1E1F21;color:#fff;font:16px/1.4 -apple-system,'SF Pro Display',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px}
+  main{width:100%;max-width:380px;display:flex;flex-direction:column;gap:14px}
+  .hero{border-radius:28px;padding:28px 22px;background:linear-gradient(150deg,#8DB3EE 0%,#9DCBEB 38%,#B5DED6 64%,#DFEC9C 100%);color:#0B0B0C;text-align:center}
+  .rings{width:84px;height:84px;margin:0 auto 14px;display:block}
+  h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-.022em;line-height:1.1}
+  .h{margin:8px 0 0;font-size:17px;font-weight:600;opacity:.75}
+  .card{background:#2A2C2F;border-radius:22px;padding:18px 16px}
+  .card p{margin:0;color:rgba(255,255,255,.65);font-size:15px}
+  .btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:999px;font-size:17px;font-weight:600;text-decoration:none}
+  .p{background:#5D6CB4;color:#fff}
+  .s{background:rgba(255,255,255,.1);color:#fff}
+  .steps{margin:10px 0 0;padding:0 0 0 20px;color:rgba(255,255,255,.65);font-size:15px}
+  .steps li{margin:4px 0}
+  b{color:#fff}
+  .foot{text-align:center;color:rgba(255,255,255,.4);font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <svg class="rings" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="#EAE7A5" stroke-width="3.4"/><circle cx="20" cy="20" r="12.8" fill="none" stroke="#C9DBBA" stroke-width="3.4"/><circle cx="20" cy="20" r="8.6" fill="none" stroke="#B3CACE" stroke-width="3.4"/><circle cx="20" cy="20" r="4.4" fill="none" stroke="#7E96D1" stroke-width="3.4"/></svg>
+    <h1>Join me on Echo</h1>
+    <p class="h" id="who">Add me as a friend</p>
+  </section>
+  <a class="btn p" id="open" href="#">Open in Echo</a>
+  <a class="btn s" href="https://apps.apple.com/app/id6838868578">Get Echo on the App Store</a>
+  <section class="card">
+    <p>New to Echo?</p>
+    <ol class="steps">
+      <li>Get Echo and sign in with Apple.</li>
+      <li>Come back here and tap <b>Open in Echo</b>, or search <b id="h2">my username</b> in Friends.</li>
+    </ol>
+  </section>
+  <p class="foot">Echo Rings · track your cut or bulk with friends</p>
+</main>
+<script>
+  var u = (new URLSearchParams(location.search).get('u') || '').toLowerCase().replace(/[^a-z0-9._]/g, '').slice(0, 20);
+  var deep = 'echorings://add?u=' + encodeURIComponent(u);
+  document.getElementById('open').href = deep;
+  if (u) {
+    document.getElementById('who').textContent = 'Add me: @' + u;
+    document.getElementById('h2').textContent = '@' + u;
+    setTimeout(function () { location.href = deep; }, 400);
+  }
+</script>
+</body>
+</html>
